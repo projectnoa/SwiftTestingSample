@@ -23,12 +23,36 @@ final class SwiftTestingSampleUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
+    func testResultsAreCalculatedProperly() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        sleep(1)
+        
+        app.buttons["5"].tap()
+        
+        sleep(1)
+        
+        app.buttons["+"].tap()
+        
+        sleep(1)
+        
+        app.buttons["5"].tap()
+        
+        sleep(1)
+        
+        app.buttons["="].tap()
+        
+        sleep(1)
+        
+        let display = app.staticTexts.element(matching: .any, identifier: "display").label
+        
+        XCTAssertEqual(display, "10", "Results are not being calculated properly!")
+        
+        sleep(1)
     }
 
     func testLaunchPerformance() throws {
