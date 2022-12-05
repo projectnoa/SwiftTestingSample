@@ -22,36 +22,43 @@ final class SwiftTestingSampleUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+    
+    func testExample() throws {
+        // UI tests must launch the application that they test.
+        //let app = XCUIApplication()
+        //app.launch()
+
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
 
     func testResultsAreCalculatedProperly() throws {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
+        // Set initial values for the test
+        // Wait for 1 second
         sleep(1)
-        
+        // Trigger a button tap event
         app.buttons["5"].tap()
-        
+        // Wait for 1 second
         sleep(1)
-        
+        // Trigger a button tap event
         app.buttons["+"].tap()
-        
+        // Wait for 1 second
         sleep(1)
-        
+        // Trigger a button tap event
         app.buttons["5"].tap()
-        
+        // Wait for 1 second
         sleep(1)
-        
+        // Trigger a button tap event
         app.buttons["="].tap()
-        
+        // Wait for 1 second
         sleep(1)
-        
-        let display = app.staticTexts.element(matching: .any, identifier: "display").label
-        
-        XCTAssertEqual(display, "10", "Results are not being calculated properly!")
-        
+        // Retrieve an element from the app current instance
+        let display = app.staticTexts.element(matching: .any, identifier: "display")
+        // Validate expectation
+        XCTAssertEqual(display.label, "10", "Results are not being calculated properly!")
+        // Wait for 1 second
         sleep(1)
     }
 
